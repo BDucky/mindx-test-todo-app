@@ -1,0 +1,13 @@
+.list-container-delete {
+  display: flex;
+  margin-top: 10px;
+  align-items: center;
+  justify-content: space-between;
+}
+.list-container-delete .task-checkbox {
+  height: 30px;
+  width: 30px;
+}
+.list-container-delete .task-text {
+  padding-left: 10px;
+}

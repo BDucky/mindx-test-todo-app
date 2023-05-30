@@ -1,0 +1,62 @@
+.active-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.active-container .active-tasks {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 35%;
+}
+.active-container .active-tasks .task-action {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.active-container .active-tasks .task-action .task-input {
+  width: 75%;
+  border: 1px solid black;
+  padding: 10px;
+  border-radius: 10px;
+}
+.active-container .active-tasks .task-action .task-input input {
+  border: none;
+  width: 100%;
+}
+.active-container .active-tasks .task-action .add-btn {
+  padding: 10px;
+  border-radius: 10px;
+  width: 15%;
+  background: #00cbf9;
+  color: white;
+}
+.active-container .active-tasks .task-list {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 25px;
+}
+.active-container .active-tasks .task-list .task-item {
+  width: 100%;
+}
+.active-container .active-tasks .task-list .task-item .list-container {
+  display: flex;
+  margin-top: 10px;
+  align-items: center;
+}
+.active-container .active-tasks .task-list .task-item .list-container .task-checkbox {
+  height: 30px;
+  width: 30px;
+}
+.active-container .active-tasks .task-list .task-item .list-container .task-text {
+  padding-left: 10px;
+}
+.active-container .active-tasks .delete-btn {
+  margin-top: 25px;
+}

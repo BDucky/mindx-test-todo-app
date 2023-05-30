@@ -1,0 +1,17 @@
+.app-container .task-status-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 35px;
+}
+.app-container .task-status-container .task-status-display {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  width: 35%;
+}
+.app-container .task-status-container .task-status-display .task-status-item {
+  cursor: pointer;
+}

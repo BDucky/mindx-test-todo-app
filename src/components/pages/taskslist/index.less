@@ -1,0 +1,73 @@
+.active-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .active-tasks {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        width: 35%;
+
+        .task-action {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+
+            .task-input {
+                width: 75%;
+                border: 1px solid black;
+                padding: 10px;
+                border-radius: 10px;
+
+                input {
+                    border: none;
+                    width: 100%;
+                }
+            }
+
+            .add-btn {
+                padding: 10px;
+                border-radius: 10px;
+                width: 15%;
+                background: #00cbf9;
+                color: white;
+            }
+        }
+
+        .task-list {
+            display: flex;
+            width: 100%;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-top: 25px;
+
+            .task-item {
+                width: 100%;
+
+                .list-container {
+                    display: flex;
+                    margin-top: 10px;
+                    align-items: center;
+
+                    .task-checkbox {
+                        height: 30px;
+                        width: 30px;
+                    }
+
+                    .task-text {
+                        padding-left: 10px
+                    }
+                }
+            }
+        }
+
+        .delete-btn {
+            margin-top: 25px;
+        }
+    }
+}
