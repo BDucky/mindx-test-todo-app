@@ -6,14 +6,14 @@ import CompletedTasks from '../completed';
 const TaskList = () => {
     const storageTasks = JSON.parse(localStorage.getItem('tasks'));
 
-    const [task, setTask] = useState([]);
+    const [task, setTask] = useState(storageTasks || []);
     const [isChecked, setIsChecked] = useState(false);
     const [completeTasks, setCompleteTasks] = useState([]);
     const [activeTasks, setActiveTasks] = useState([]);
     const [renderStatus, setRenderStatus] = useState('All');
     const inputRef = useRef(null);
 
-
+    console.log(storageTasks);
     const TaskStatus = ["All", "Active", "Completed"]
 
     const addTask = (e) => {
@@ -42,11 +42,21 @@ const TaskList = () => {
         if (e.key === 'Enter') {
             if (inputRef.current.value === '') return;
             const newTask = {
-                id: task.length + 1,
+                id: task?.length + 1,
                 task: inputRef.current.value,
                 isChecked: false
             };
-            setTask(prev => [...prev, newTask]);
+            setTask(prev => {
+
+                const saveTasks = [...prev, newTask]
+
+                const jsonTasks = JSON.stringify(saveTasks)
+                localStorage.setItem('tasks', jsonTasks)
+
+                console.log(jsonTasks)
+
+                return saveTasks
+            });
             inputRef.current.value = '';
         }
     }
@@ -60,6 +70,7 @@ const TaskList = () => {
         })
         filterActiveTasks(item);
         filterCompleteTasks(item);
+        localStorage.setItem('tasks', JSON.stringify(task));
     }
 
     const filterCompleteTasks = () => {
@@ -81,12 +92,14 @@ const TaskList = () => {
         const newCompleteTasksArray = completeTasks.filter((item) => item.id !== id);
         setTask(newTasksArray);
         setCompleteTasks(newCompleteTasksArray);
+        localStorage.setItem('tasks', JSON.stringify(newTasksArray));
     }
 
     const deleteAllCompleted = () => {
         const newTasksArray = task.filter((item) => item.isChecked !== true);
         setTask(newTasksArray);
         setCompleteTasks([]);
+        localStorage.setItem('tasks', JSON.stringify(newTasksArray));
     }
     return (
         <>
