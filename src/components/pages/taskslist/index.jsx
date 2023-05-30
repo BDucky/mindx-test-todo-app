@@ -5,11 +5,13 @@ import CompletedTasks from '../completed';
 
 const TaskList = () => {
     const storageTasks = JSON.parse(localStorage.getItem('tasks'));
+    const storageActiveTasks = JSON.parse(localStorage.getItem('activeTasks'));
+    const storageCompletedTasks = JSON.parse(localStorage.getItem('completedTasks'));
 
     const [task, setTask] = useState(storageTasks || []);
     const [isChecked, setIsChecked] = useState(false);
-    const [completeTasks, setCompleteTasks] = useState([]);
-    const [activeTasks, setActiveTasks] = useState([]);
+    const [completeTasks, setCompleteTasks] = useState(storageCompletedTasks || []);
+    const [activeTasks, setActiveTasks] = useState(storageActiveTasks || []);
     const [renderStatus, setRenderStatus] = useState('All');
     const inputRef = useRef(null);
 
@@ -76,11 +78,13 @@ const TaskList = () => {
     const filterCompleteTasks = () => {
         const completed = task.filter((item) => item.isChecked === true);
         setCompleteTasks(completed);
+        localStorage.setItem('completedTasks', JSON.stringify(completed));
     }
 
     const filterActiveTasks = () => {
         const active = task.filter((item) => item.isChecked === false);
         setActiveTasks(active);
+        localStorage.setItem('activeTasks', JSON.stringify(active));
     }
 
     const statusRender = (status) => {
@@ -92,14 +96,14 @@ const TaskList = () => {
         const newCompleteTasksArray = completeTasks.filter((item) => item.id !== id);
         setTask(newTasksArray);
         setCompleteTasks(newCompleteTasksArray);
-        localStorage.setItem('tasks', JSON.stringify(newTasksArray));
+        // localStorage.setItem('tasks', JSON.stringify(newTasksArray));
     }
 
     const deleteAllCompleted = () => {
         const newTasksArray = task.filter((item) => item.isChecked !== true);
         setTask(newTasksArray);
         setCompleteTasks([]);
-        localStorage.setItem('tasks', JSON.stringify(newTasksArray));
+        // localStorage.setItem('tasks', JSON.stringify(newTasksArray));
     }
     return (
         <>
